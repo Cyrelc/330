@@ -7,7 +7,7 @@ public class Track : MonoBehaviour {
 
     public Vector3 lane;
     public Vector3[] lane_display;
-    public float u, velocity, first_gear, second_gear, third_gear, fourth_gear, top_speed, drag, weight, angle, road_smooth;
+    public float u, velocity, first_gear, second_gear, third_gear, fourth_gear, top_speed, drag, weight/*, angle, road_smooth*/;
     public Transform[] ctrl;
     private BSpline b;
 	// Use this for initialization
@@ -15,7 +15,6 @@ public class Track : MonoBehaviour {
         b = new BSpline(ctrl);
         u = 0f;
         top_speed = 40f;
-//        road_smooth = 0.1f;
         velocity = 0;
         lane = Vector3.zero;
         drag *= weight;
@@ -35,7 +34,7 @@ public class Track : MonoBehaviour {
         for (int i = 0; i < lane_display.Length; i++)
             Handles.DrawLine(lane_display[i], lane_display[i + 1]);
         transform.LookAt(next_pos);
-        transform.position = next_pos + lane;        
+        transform.position = next_pos + lane;
 	}
 
     void deltaVelocity() {
